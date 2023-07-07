@@ -36,16 +36,6 @@
     "**/*.{js,jsx,ts,tsx}": [
       "npx prettier --write",
       "npx eslint --fix"
-    ],
-    "*.css": [
-      "npm run lint:css",
-      "npm run format:css",
-      "git add"
-    ],
-    "*.html": [
-      "npm run lint:html",
-      "npm run format:html",
-      "git add"
     ]
   }
 }
