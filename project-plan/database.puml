@@ -1,0 +1,72 @@
+@startuml
+
+entity Pasien {
+    email : text
+    --
+    nama : text
+    --
+    username : text <PK>
+
+}
+
+entity Dokter {
+    email : text
+    --
+    nama : text
+    --
+    username : text <PK>
+}
+
+entity Alamat {
+    telp : text <PK>
+    --
+    username_pasien : text <FK>
+    --
+    jalan : text
+    kota : text
+    provinsi : text
+}
+
+entity Dompet {
+    email : text <PK>
+    --
+    email_pembeli : text <FK>
+    --
+    saldo : number
+}
+
+Pasien ||--o| Dompet
+note on link
+    Memiliki
+end note
+
+entity Jasa {
+    kode-layanan : text <PK>
+    --
+    email_dokter : text <FK>
+    --
+    nama-layanan : text
+    --
+    harga : number
+}
+
+object Membeli {
+    kode-layanan: text <FK>
+    username_pasien : text <FK>
+}
+
+Pasien }o-- Membeli
+
+Jasa }|-- Membeli
+
+Dokter ||--o| Jasa
+note on link
+    Menjual
+end note
+
+Pasien ||--o{ Alamat
+note on link
+    Memiliki
+end note
+
+@enduml
